@@ -1,0 +1,96 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+body{
+  background-color:#E9EBEE ;
+}
+
+ #bi {
+  background-color:#E9EBEE;
+  border-radius: 10px;
+  border-color:#FFFAF0;
+ }
+</style>
+<script>
+   function aa(){
+    alert('You have to log in.')
+   }
+</script>
+<div class="container mt-5">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
+<p>{{object_lists}}</p>
+  <center><form action="submit" method="post">
+    {% csrf_token %}
+  <input type="text" name="ccc" size="45" placeholder="physics grade10 algebra">
+  <input type="submit" value="Submit">
+</form></center><br>
+
+  <div class="row">
+    {% for post in object_list %}
+    <div class="card col-lg-6 offset-lg-3 mb-3" style="border:1px solid Gray;">
+      {% if post.image %}
+      <img class="card-img-top mt-3" style="height:500px;width:545px;" src="{{ post.image.url }}" alt="{{ post.title }}">
+      {% endif %}
+      <div class="card-body">
+        <a href="{% url 'core:post' post.id post.slug %}">
+          <h2 class="card-title my-3">{{ post.title }} </h2>
+        </a>
+        <div class="text-muted mb-3">
+          <div>
+            <span>created: {{ post.created_on|date:"N j Y" }} |</span>
+            <span>updated: {{ post.updated_on|timesince }} ago |</span>
+            <span>author: {{ post.author }}</span>
+          </div>
+          <div>
+          </div>
+        </div>
+        <div id="bi"><hr>
+        <p class="card-text">{{ post.content|linebreaks }}</p>
+        </div>
+        {% if user.is_authenticated %}
+        <a class='btn btn-primary' href="{% url 'core:post' post.id post.slug %}">Solution ...</a>
+        {% else %}
+        <a class='btn btn-primary' onclick="aa()" href="#">Provide solution ...</a>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="row">
+    <nav class="col-lg-6 offset-lg-3 mt-4 d-flex justify-content-center">
+      <ul class="pagination">
+
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+          <a class="page-link" href="#">Previous</a>
+        </li>
+        {% endif %}
+  
+        {% for i in page_obj.paginator.page_range %}
+        <li class=" page-item {% if page_obj.number == i %}active{% endif %}">
+            <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+        </li>
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+          <a class="page-link" href="#">Next</a>
+        </li>
+        {% endif %}
+
+      </ul>
+    </nav>
+  </div>
+
+  {% endblock content %}
+

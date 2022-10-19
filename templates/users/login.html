@@ -1,0 +1,64 @@
+
+{% extends 'base.html' %}
+
+{% block head_title %}Log In{% endblock %}
+
+{% block content %}
+<script>
+  function validateForm() {
+  let x = document.forms["myForm"]["id_emai"].value;
+
+  const char = '@';
+  if (x.includes(char)) {
+  
+} else {
+  //string = x + "@gmail.com"
+  //var s = document.getElementById('id_emai');
+ // s.value = ''
+  }
+}
+</script>
+
+
+{% if messages %}
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  {% for message in messages %}
+  <strong></strong> {{message}}
+  {% endfor %}
+</div>
+{% endif %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h2 class=" my-5">Log in</h2>
+      <form method="post" name="myForm" onsubmit="return validateForm()">
+        {% csrf_token %}
+
+        <div class="form-group">
+         <b>Phone number or</b> {{ form.email.label_tag }}
+          <input type="text" class="form-control {% if form.email.errors %}is-invalid{% endif %}" id="id_emai"
+            name="email" value='{{ form.email.value|default:"" }}'>
+          {% if form.email.errors %}
+          <div class="invalid-feedback">{{ form.email.errors }}</div>
+          {% endif %}
+        </div>
+<!--onsubmit="return validateForm()"-->
+        <div class="form-group">
+          {{ form.password.label_tag }}
+          <input type="password" class="form-control {% if form.password.errors %}is-invalid{% endif %}"
+            id="id_password" name="password" value='{{ form.password.value|default:"" }}'>
+          {% if form.password.errors %}
+          <div class="invalid-feedback">{{ form.password.errors }}</div>
+          {% endif %}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Sign In</button>
+      </form>
+      <br>
+      <p>Forgot your password? <a href="{% url 'users:password_reset' %}">Click here</a></p>
+    </div>
+  </div>
+</div><br><br><br><br><br><br><br><br><br><br>
+{% endblock content %}

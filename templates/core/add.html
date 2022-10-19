@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="Ask online Form">
+  <meta name="description" content="The Ask is a bootstrap design help desk, support forum website template coded and designed with bootstrap Design, Bootstrap, HTML5 and CSS. Ask ideal for wiki sites, knowledge base sites, support forum sites">
+  <meta name="keywords" content="HTML, CSS, JavaScript,Bootstrap,js,Forum,webstagram ,webdesign ,website ,web ,webdesigner ,webdevelopment">
+  <meta name="robots" content="index, nofollow">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="English">
+  <title>Ask Me</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
+  <link href="{% static 'css/editor.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css"> </head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script>
+    function check(){
+      const a = document.getElementById('id_content')
+      cons = a.value
+      var arrayOfLines = a.value.split("\n"); 
+      //arrayOfLines[1] = "i am"
+      //console.log(arrayOfLines)
+      var arrayLength = arrayOfLines.length;
+    
+      function stringContainsNumber(_string) {
+        return /\d/.test(_string);
+      }
+    
+    function strReplace(myStr){
+            var newStr = myStr.replace(/,/g, "");
+            var x = document.getElementById('id_content');
+           x.value = newStr
+           
+        }
+    
+    function removeForbiddenCharacte(input) {
+    let forbiddenChars = ['/', ',']
+    for (let char of forbiddenChars){
+        input = input.toString().split(char).join('');
+    }
+    var x = document.getElementById('id_content');
+    x.value =input
+    }
+    
+    for (var i = 0; i < arrayLength; i++) {
+      // && stringContainsNumber(arrayOfLines[i])
+      //  if (arrayOfLines[i].includes('-')){
+       //   h = "`"+arrayOfLines[i]+"`"
+        //   arrayOfLines[i] = h+"\n"+""
+         //  removeForbiddenCharacters(arrayOfLines)
+          // var x = document.getElementById('id_content');
+          // x.value =arrayOfLines
+       // } else if(arrayOfLines[i].includes('+')){
+        //  h = "`"+arrayOfLines[i]+"`"
+        //   arrayOfLines[i] = "\n"+ h
+        //   removeForbiddenCharacter(arrayOfLines)
+         if(arrayOfLines[i].includes('=')){
+          h = "`"+arrayOfLines[i]+"`"
+           arrayOfLines[i] = "\n"+ h
+           removeForbiddenCharacte(arrayOfLines)
+    }
+    }
+    }
+
+    function check2(){
+      const a = document.getElementById('id_content')
+      cons = a.value
+      
+      //if ((cons.includes('=')) && (cons.includes('`')==false)){
+      //alert('Saround the equations and terms with backticks and test them so that they can be presented correctly.\r\n\r\n Example\r\n`2x-1=0`\r\n`2x=1`\r\n`x=1/2`\r\n\r\n`x^2-2x+1=0`\r\n`(x-2)(x-1)=0`\r\n`x=2 or x=1`')
+    //} else if ((cons.includes('-')) && (cons.includes('`')==false))  {
+    //alert('Saround the equations and terms with backticks and test them so that they can be presented correctly.\r\n\r\n Example\r\n`2x-1=0`\r\n`2x=1`\r\n`x=1/2`')
+    //}else{
+     if ((cons.includes('=')) && (cons.includes('`')==false)){
+       confirm('Saround equations with backticks by clicking backtick or you can test the equation before you submit ')
+      return false
+               
+    }else{
+    console.log('fhhzhgfh')
+    return true
+    }
+    }
+
+    function validateForm() {
+      let x = document.forms["myForm"]["content"].value;
+      if (x == "") {
+        alert("If you are submiting a Image solution,click 'Word Count' and submit the image,copy the text and paste it to the text box so that the number of lines can be calculated.");
+        return false;
+      }
+    }
+
+  </script>
+  <style>
+
+    .content-box {
+      height: 550px;
+      padding: 20px;
+      border: 2px solid black;
+      width: 90%;
+      display: flex;
+      align-self: flex-end;
+
+
+    }
+
+    .card-img-top{
+      display: none;
+  }
+
+  .card {
+    height:300px;
+    width:680px;
+    border: 1px solid red;
+
+  }
+
+  .ques-details10018 {
+    margin-top: 10px;
+     overflow: hidden;
+     -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+     display: -webkit-box;
+     -webkit-line-clamp: unset;
+     -webkit-box-orient: vertical;
+ }
+
+  </style>
+<body>
+ 
+  <div class="top-menu-bottom932">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                <a class="fa fa-graduation-cap" style="font-size:80px; color:white;" href="#">Ask?</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav"> </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="{% url 'core:views' %}"> Questions </a></li>
+                   
+                    <li><div class="dropdown">
+                      {% if bell.count > 0 %}
+                      <p onclick="myFunction()" class="notification"> <span>Solutions</span> <span class="badge">{{bell.count}}</span> </p>
+                      {% else %}
+                      <p onclick="myFunction()" class="notification"> <span>Solutions</span> <span class="badge"></span> </p>
+                      {% endif %}
+                      <div id="myDropdown" class="dropdown-content">
+                        {% for i in bell %}
+                        <a href="{% url 'core:see' i.verb i.id  %}">{{i.description}}</a>
+                        {% endfor %}
+                      </div>
+                    </div></li>
+                    {% if request.user.is_authenticated %}
+                    <li> 
+                      <li><a href=" {% url 'users:logout' %} " >Log Out</a></li>
+                    </li>
+                    <li> 
+                      <li><a href="{% url 'users:profile' request.user.username %}  " >Profile</a></li>
+                    </li>
+                    <li> 
+                      <li><a href=" location " >Location</a></li>
+                    </li>
+                    <li> 
+                      <li><a href=" reco " >Recommendations </a></li>
+                    </li>
+                    <li><a href="posts">My Questions</a></li>
+                    {% if request.user.is_superuser %}
+                    <li> 
+                      <li><a href="admin" >Admin </a></li>
+                    </li>
+
+                    {% else %}
+                    {% endif %}
+                    <li> 
+                      <li><a href="Polls" >Polls</a></li>
+                    </li>
+                    {% if count > 2 %}
+                    <li> 
+                      <li><a href="" onclick="warn()">Ask Question</a></li>
+                    </li>
+                    {% else %}
+                    <li> 
+                      <li><a href="{% url 'core:post_create' %}  " >Ask Question</a></li>
+                    </li>
+                    {% endif %}
+                    {% else %}
+                    <li> 
+                      <li><a href=" {% url 'users:login' %}  " >Log In</a></li>
+                    </li>
+                    <li> 
+                      <li><a href=" {% url 'users:signup' %} " >Sign Up</a></li>
+                    </li>
+                    
+                    {% endif %}
+
+                        <ul class="dropdown-menu animated zoomIn">
+                            
+                        </ul>
+                    </li>
+                   
+                        <ul class="dropdown-menu animated zoomIn">
+                        </ul>
+                    </li>
+                        <ul class="dropdown-menu animated zoomIn">
+                            <li><a href="logIn.html">Login</a></li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
+<script>
+  function copyToClipBoard() {
+
+var content = document.getElementById('id_content');
+
+content.select();
+document.execCommand('copy');
+var result = confirm("you have copied equation");
+            if (result == true) {
+             return false
+               doc = "OK was pressed.";
+            } else {
+                doc = "Cancel was pressed.";
+            return false
+            }
+}
+
+function c() {
+  const a = document.getElementById('id_content')
+  cons = a.value
+  var arrayOfLines = a.value.split("\n"); 
+  //arrayOfLines[1] = "i am"
+  //console.log(arrayOfLines)
+  var arrayLength = arrayOfLines.length;
+
+  function stringContainsNumber(_string) {
+    return /\d/.test(_string);
+  }
+
+function strReplace(myStr){
+        var newStr = myStr.replace(/,/g, "");
+        var x = document.getElementById('id_content');
+       x.value = newStr
+       
+    }
+
+function removeForbiddenCharacte(input) {
+let forbiddenChars = ['/', ',']
+for (let char of forbiddenChars){
+    input = input.toString().split(char).join('');
+}
+var x = document.getElementById('id_content');
+x.value =input
+}
+
+for (var i = 0; i < arrayLength; i++) {
+  // && stringContainsNumber(arrayOfLines[i])
+  //  if (arrayOfLines[i].includes('-')){
+   //   h = "`"+arrayOfLines[i]+"`"
+    //   arrayOfLines[i] = h+"\n"+""
+     //  removeForbiddenCharacters(arrayOfLines)
+      // var x = document.getElementById('id_content');
+      // x.value =arrayOfLines
+   // } else if(arrayOfLines[i].includes('+')){
+    //  h = "`"+arrayOfLines[i]+"`"
+    //   arrayOfLines[i] = "\n"+ h
+    //   removeForbiddenCharacter(arrayOfLines)
+     if(arrayOfLines[i].includes('=')){
+      h = "`"+arrayOfLines[i]+"`"
+       arrayOfLines[i] = "\n"+ h
+       removeForbiddenCharacte(arrayOfLines)
+}
+}
+}
+ 
+function c2(){
+  var result = confirm("If you have copied equation click ok\nIf you did not copy equation click cancel");
+            if (result == true) {
+              return true
+               doc = "OK was pressed.";
+            } else {
+               doc = "Cancel was pressed.";
+               return false
+            }
+}
+</script>
+
+<center><b> Syntax </b></center>
+<center><p> <a href="http://asciimath.org/"> θ → theta </a></p></center>
+<center><p> <a href="http://asciimath.org/"> π → pi </a></p></center>
+<center><p> <a href="http://asciimath.org/"> √16 → sqrt 16 </a></p></center>
+<center><p> <a href="http://asciimath.org/"> ∛x → root(3)(x) </a></p></center>
+<center><p> <a href="http://asciimath.org/"> 𝒙16 → X^16 </a></p></center>
+<center><p> <a href="http://asciimath.org/">Click for more Syntax</a></p></center>
+<center><p>{{object_lists|linebreaks}}</p></center>
+<button class="btn btn-danger ml-2" onclick="c()">Backticks</button>
+
+<form name="myForm" id="myForm" method="POST">
+  {% csrf_token %}
+
+  <p><br><br>
+    <center><textarea class="form-control {% if form.content.errors %}is-invalid{% endif %}" id="id_content"
+     name="content" rows="10">{{ form.content.value|default:'' }}</textarea></center>
+  </p>
+  <p>
+      <input type="submit" class="btn btn-danger ml-2" onclick="return c2()" value="Check Equation" />
+      <button class="btn btn-danger ml-2" onclick="return copyToClipBoard()">Copy Equation</button>
+
+
+  </p>
+</form>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+      <script src="{% static 'js/editor.js' %}"></script>
+   	<script>
+			$(document).ready(function() {
+				$("#txtEditor").Editor();
+			});
+		</script>
+  
+</body>
+
+</html>

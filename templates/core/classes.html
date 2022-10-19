@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="Ask online Form">
+  <meta name="description" content="The Ask is a bootstrap design help desk, support forum website template coded and designed with bootstrap Design, Bootstrap, HTML5 and CSS. Ask ideal for wiki sites, knowledge base sites, support forum sites">
+  <meta name="keywords" content="HTML, CSS, JavaScript,Bootstrap,js,Forum,webstagram ,webdesign ,website ,web ,webdesigner ,webdevelopment">
+  <meta name="robots" content="index, nofollow">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="English">
+  <title>Ask Me</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
+  <link href="{% static 'css/editor.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css"> </head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body>
+  <script>
+
+    function showtext(){
+      var text = document.getElementById("txtarea");
+      var showarea = document.getElementById("adduserdata");
+      showarea.innerHTML=text.value;
+     }
+
+  </script>
+  <style>
+   .v{
+    width:540px;
+    height:470spx;
+   }
+
+   @media screen and (max-width: 992px) {
+    .v{
+        width:359px;
+    height:450px;
+    }
+  }
+  </style>
+ 
+  <div class="top-menu-bottom932">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                <a class="fa fa-graduation-cap" style="font-size:80px; color:white;" href="#">Ask?</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav"> </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="{% url 'core:views' %}"> Questions </a></li>
+                   
+                    <li><div class="dropdown">
+                      {% if bell.count > 0 %}
+                      <p onclick="myFunction()" class="notification"> <span>Solutions</span> <span class="badge">{{bell.count}}</span> </p>
+                      {% else %}
+                      <p onclick="myFunction()" class="notification"> <span>Solutions</span> <span class="badge"></span> </p>
+                      {% endif %}
+                      <div id="myDropdown" class="dropdown-content">
+                        {% for i in bell %}
+                        <a href="{% url 'core:see' i.verb i.id  %}">{{i.description}}</a>
+                        {% endfor %}
+                      </div>
+                    </div></li>
+                    {% if request.user.is_authenticated %}
+                    <li> 
+                      <li><a href=" {% url 'users:logout' %} " >Log Out</a></li>
+                    </li>
+                    <li> 
+                      <li><a href="{% url 'users:profile' request.user.username %}  " >Profile</a></li>
+                    </li>
+                    <li> 
+                    </li>
+                    <li> 
+                    </li>
+                    {% if request.user.is_superuser %}
+                    <li> 
+                      <li><a href="admin" >Admin </a></li>
+                    </li>
+
+                    {% else %}
+                    {% endif %}
+                    <li> 
+                    </li>
+                    {% if count > 2 %}
+                    <li> 
+                      <li><a href="" onclick="warn()">Ask Question</a></li>
+                    </li>
+                    {% else %}
+                    <li> 
+                      <li><a href="{% url 'core:post_create' %}  " >Ask Question</a></li>
+                    </li>
+                    {% endif %}
+                    {% else %}
+                    <li> 
+                      <li><a href=" {% url 'users:login' %}  " >Log In</a></li>
+                    </li>
+                    <li> 
+                      <li><a href=" {% url 'users:signup' %} " >Sign Up</a></li>
+                    </li>
+                    
+                    {% endif %}
+
+                        <ul class="dropdown-menu animated zoomIn">
+                            
+                        </ul>
+                    </li>
+                   
+                        <ul class="dropdown-menu animated zoomIn">
+                        </ul>
+                    </li>
+                        <ul class="dropdown-menu animated zoomIn">
+                            <li><a href="logIn.html">Login</a></li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+</div>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<br><br>
+
+<!--<label style="border:3px solid red; background-color:black; color:white;  ">Upload classes</label>
+<form action="save" enctype="multipart/form-data" method="post" >
+  {% csrf_token %}
+    <input type="file" id="myFile" name="filename">
+    <input type="submit">
+  </form><br><br>-->
+
+  {% for post in vido %}
+
+  <div class="question-type2033" style="border:2px solid red;" >
+
+      <div class="row">
+
+          <div class="col-md-1">
+
+            <!--  <div class="left-user12923 left-user12923-repeat">
+                  <a href="#"> </a> <a href="#"><i class="fa fa-user" style="font-size:24px" aria-hidden="true"></i></a> </div>-->
+          </div>
+          <div class="col-md-9">
+              <div class="right-description893">
+                  <div id="que-hedder2983">
+                      <h3><a href="post-deatils.html" target="_blank"> </a></h3> </div>
+                      <div class="ques-details10018">
+                        <video class="v" controls>
+                            <source src="{{ post.vedio.url }}" type="video/mp4">
+                          </video>
+                    </div>
+                    <hr>
+                   
+                   <!-- <a class="image-link" href="{{ post.vedio.url }}" width="359" height="450"    class="">Graphic Solution</a>-->
+                     <form action="comment2" method="post">
+                       {% csrf_token %}
+                     <textarea name="txt" style="width:80%; height:60%;" placeholder="Comment" id="txtarea"></textarea>
+                     <input value="submit" type="submit">
+                     </form>
+                </div>
+            </div>   
+          <div class="col-md-2">
+              <div class="ques-type302">
+                  <a href="#">
+                  </a>
+                  <a href="#">
+                  </a>
+              </div>
+          </div><br>
+      </div>
+  </div>
+  {% endfor %}
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/editor.js' %}"></script>
+     <script>
+          $(document).ready(function() {
+              $("#txtEditor").Editor();
+          });
+      </script>
+
+</body>
+
+</html>

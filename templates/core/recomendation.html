@@ -1,0 +1,738 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+
+  .id{
+    border-radius: 9px;
+    
+  }
+
+.btn{
+  background-color:Tomato;
+  width:70px;
+  height:40px;
+  color:white;
+  border-radius:5px;
+}
+  
+.but{
+  background-color:black;
+  width:70px;
+  height:40px;
+  color:white;
+  border-radius:5px;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    /*background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);*/
+    background-color:white;
+    overflow-x: hidden;
+    transition: 0.5s;
+  }
+  
+  .overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+  }
+  
+  .overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: black;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+  }
+  
+  .overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+  }
+
+  /*#E9EBEE ;*/
+  .add{
+    border-radius: 6px;
+    height: 40px;
+    width: 360px;
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: 95% center;
+    border-radius: 50px;
+    border: 1px solid #575756;
+    transition: all 250ms ease-in-out;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;     
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+  }
+  
+  #co {
+    background-color:#E9EBEE;
+    border-radius: 10px;
+    border-color:#FFFAF0;
+  }
+  #color{
+    border: 5px solid black;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+
+
+  h3 {
+    font-size: 20px;
+    color:Tomato;
+    width:160px;
+    border:3px solid Tomato;
+  }
+
+  hr {
+   background-color:black;
+  }
+
+</style>
+<script>
+  
+
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script><br>
+<p>{{int}}</p>
+<center><form action="recomend" method="post">
+  {% csrf_token %}
+  <select name="myselect" class="id" id="myselect">
+    <option value="yes">Answerd</option>
+    <option value="no">Unanswerd</option>
+</select>
+<select class="id" name="grade" id="myselect">
+    <option value="Grade4">Grade 4</option>
+    <option value="Grade5">Grade 5</option>
+    <option value="Grade6">Grade 6</option>
+    <option value="Grade7">Grade 7</option>
+    <option value="Grade8">Grade 8</option>
+    <option value="Grade9">Grade 9</option>
+    <option value="Grade10">Grade 10</option>
+    <option value="Grade11">Grade 11</option>
+    <option value="Grade12">Grade 12</option>
+    <option value="Tetiary">Tetiary</option> 
+    <option value="Other">Other</option> 
+
+</select>
+<select class="id" name="sub" id="myselect">
+  <option value="Maths">Maths</option>
+  <option value="Life Science">Life science</option>
+  <option value="Physics">Physics</option>
+  <option value="Natural Science">Natural Science</option>
+  <option value="Geography">Geography</option>
+  <option value="Maths Literacy">Maths Literacy</option>
+  <option value="Technology">Technology</option>
+  <option value="Accounting">Accounting</option>
+  <option value="EMS">EMS</option>
+  <option value="Nursing">Nursing</option>
+  <option value="Music">Music</option>
+  <option value="Medical">Medical</option>
+  <option value="Economics">Economics</option>
+  <option value="Law">Law</option>
+  <option value="Chemistry">Chemistry</option>
+  <option value="Education">Education</option>
+  <option value="Engineering">Engineering</option>
+  <option value="Psychology">Psychology</option>
+  <option value="Pharmacy">Pharmacy</option>
+  <option value="Business">Business Administration</option>
+  <option value="Statistics">Statistics</option>
+  <option value="Art">Art</option>
+  <option value="Computer Science">Computer Science</option>
+  <option value="Accounting">Accounting</option>
+  <option value="Architecture">Architecture</option>
+  <option value="Hospitality ">Hospitality </option>
+  <option value="Finance">Finance</option>
+  <option value="Agriculture">Agriculture</option>
+  <option value="Other">Other</option>
+  <option value="Journalism and Mass Communication">Journalism and Mass Communication</option>
+</select>
+<input class="add" type="text" size="24" name="ccc" placeholder="description">
+<input class="but" type="submit" value="Submit">
+</form></center>
+
+<!-- ======content section/body=====-->
+<section class="main-content920">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-9">
+              <div id="main">
+                  <input id="tab1" type="radio" name="tabs" checked>
+                 <!-- <input id="tab2" type="radio" name="tabs">
+                  <label for="tab2">Most Response</label>
+                  <input id="tab3" type="radio" name="tabs">
+                  <label for="tab3">Recently Answered</label>
+                  <input id="tab4" type="radio" name="tabs">
+                  <label for="tab4">No Answer</label>
+                  <input id="tab5" type="radio" name="tabs">
+                  <label for="tab5">Recent Post</label>-->
+                  
+              
+                  
+                  <section id="content1">
+
+                    <div class="question-type2033" style="border:2px solid red;" >
+
+                        <div class="row">
+
+                            <div class="col-md-1">
+
+                              
+                            </div>
+                            <div class="col-md-9">
+                                <div class="right-description893">
+                                    <div id="que-hedder2983">
+                                        <h3><a href="post-deatils.html" target="_blank"> </a></h3> </div>
+                                        <div class="ques-details10018">
+                                          <p>  </p>
+                                          <h4>  Advertisement </h4>
+
+                                      </div>
+                                      <hr>
+
+                                  
+                                    
+                                  </div>
+                              </div>   
+                            <div class="col-md-2">
+                                <div class="ques-type302">
+                                    <a href="#">
+                                    </a>
+                                    <a href="#">
+                                    </a>
+                                </div>
+                            </div><br>
+                        </div>
+                    </div>
+
+                    <div class="question-type2033" style="border:2px solid red;" >
+
+                        <div class="row">
+
+                            <div class="col-md-1">
+
+                            </div>
+                            <div class="col-md-9">
+                                <div class="right-description893">
+                                    <div id="que-hedder2983">
+                                        <h3><a href="post-deatils.html" target="_blank"> </a></h3> </div>
+                                        <div class="ques-details10018">
+                                          <p>  </p>
+                                          <h4>  Advertisement </h4>
+
+                                      </div>
+                                      <hr>
+
+
+                                    
+                                  </div>
+                              </div>   
+                            <div class="col-md-2">
+                                <div class="ques-type302">
+                                    <a href="#">
+                                    </a>
+                                    <a href="#">
+                                    </a>
+                                </div>
+                            </div><br>
+                        </div>
+                    </div>
+
+                    <div class="question-type2033" style="border:2px solid red;" >
+
+                        <div class="row">
+
+                            <div class="col-md-1">
+
+                              
+                            </div>
+                            <div class="col-md-9">
+                                <div class="right-description893">
+                                    <div id="que-hedder2983">
+                                        <h3><a href="post-deatils.html" target="_blank"> </a></h3> </div>
+                                        <div class="ques-details10018">
+                                          <p>  </p>
+                                          <h4>  Advertisement </h4>
+
+                                      </div>
+                                      <hr>
+
+                                     
+                                    
+                                  </div>
+                              </div>   
+                            <div class="col-md-2">
+                                <div class="ques-type302">
+                                    <a href="#">
+                                    </a>
+                                    <a href="#">
+                                    </a>
+                                </div>
+                            </div><br>
+                        </div>
+                    </div>
+
+                    <div class="question-type2033" style="border:2px solid red;" >
+
+                        <div class="row">
+
+                            <div class="col-md-1">
+
+                               
+                            </div>
+                            <div class="col-md-9">
+                                <div class="right-description893">
+                                    <div id="que-hedder2983">
+                                        <h3><a href="post-deatils.html" target="_blank"> </a></h3> </div>
+                                        <div class="ques-details10018">
+                                          <p>  </p>
+                                          <h4>  Advertisement </h4>
+
+                                      </div>
+                                      <hr>
+
+                                     
+
+                                    
+                                  </div>
+                              </div>   
+                            <div class="col-md-2">
+                                <div class="ques-type302">
+                                    <a href="#">
+                                    </a>
+                                    <a href="#">
+                                    </a>
+                                </div>
+                            </div><br>
+                        </div>
+                    </div>
+
+                    <div class="question-type2033" style="border:2px solid red;" >
+
+                        <div class="row">
+
+                            <div class="col-md-1">
+
+                                
+                            </div>
+                            <div class="col-md-9">
+                                <div class="right-description893">
+                                    <div id="que-hedder2983">
+                                        <h3><a href="post-deatils.html" target="_blank"> </a></h3> </div>
+
+                                        <div class="ques-details10018">
+                                            <h4>  Advertisement </h4>
+
+                                          <p>  </p>
+                                      </div>
+                                      <hr>
+
+
+                                    
+                                  </div>
+                              </div>   
+                            <div class="col-md-2">
+                                <div class="ques-type302">
+                                    <a href="#">
+                                    </a>
+                                    <a href="#">
+                                    </a>
+                                </div>
+                            </div><br>
+                        </div>
+                    </div>
+
+                    <div class="question-type2033" style="border:2px solid red;" >
+
+                        <div class="row">
+
+                            <div class="col-md-1">
+
+                            </div>
+                            <div class="col-md-9">
+                                <div class="right-description893">
+                                    <div id="que-hedder2983">
+                                        <h3><a href="post-deatils.html" target="_blank"> </a></h3> </div>
+                                        <div class="ques-details10018">
+                                            <h4>  Advertisement </h4>
+
+                                          <p>  </p>
+                                      </div>
+                                      <hr>
+                                    
+                                    
+                                  </div>
+                              </div>   
+                            <div class="col-md-2">
+                                <div class="ques-type302">
+                                    <a href="#">
+                                    </a>
+                                    <a href="#">
+                                    </a>
+                                </div>
+                            </div><br>
+                        </div>
+                    </div>
+
+
+                         <!--Recent Question Content Section -->
+                         {% for post in reco %}
+
+                      <div class="question-type2033" style="border:2px solid red;" >
+
+                          <div class="row">
+
+                              <div class="col-md-1">
+
+                                  <div class="left-user12923 left-user12923-repeat">
+                                      <a href="#"> </a> <a href="#"><i class="fa fa-user" style="font-size:24px" aria-hidden="true"></i></a> </div>
+                              </div>
+                              <div class="col-md-9">
+                                  <div class="right-description893">
+                                      <div id="que-hedder2983">
+                                          <h3><a href="post-deatils.html" target="_blank">{{ post.sub }}  </a></h3> </div><hr>
+                                          <div class="ques-details10018">
+                                            <p>  {{ post.content|slice:":400"|linebreaks }}........ .</p>
+                                        </div>
+                                        <hr>
+                                        <div class="ques-icon-info3293"></i> </a>  <a href="#"><i class="fa fa-clock-o" aria-hidden="true"> created: {{ post.created_on|date:"N j Y" }}  </i></a> <a href="#"><i class="fa fa-map-marker  " aria-hidden="true">{{ post.country}} , {{ post.province}} , {{ post.place}} , {{ post.school}} , {{ post.grade}} </i></a>  </div> 
+
+                                        <a class='btn' href=" {% url 'core:recos' post.id2  %} ">Solution ...</a>
+
+                                    </div>
+                                </div>   
+                              
+                              <div class="col-md-2">
+                                  <div class="ques-type302">
+                                      <a href="#">
+                                      </a>
+                                      <a href="#">
+                                      </a>
+                                  </div>
+
+                              </div><br>
+                          </div>
+
+                      </div>
+                      {% endfor %}
+
+                      <nav aria-label="Page navigation">
+                        <ul class="pagination">
+
+                          {% if object_list.has_previous %}
+                          <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                          </li>
+                          {% else %}
+                          <li class="page-item disabled">
+                            <a class="page-link" href="#">Previous</a>
+                          </li>
+                          {% endif %}
+                    
+                          {% for i in object_list.paginator.page_range %}
+                          <li class=" page-item {% if page_obj.number == i %}active{% endif %}">
+                              <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                          </li>
+                          {% endfor %}
+                  
+                          {% if object_list.has_next %}
+                          <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                          </li>
+                          {% else %}
+                          <li class="page-item disabled">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                          </li>
+                         {% endif %}
+                        </ul>
+                      </nav>        <!--End of content-5-->
+                    
+                  </section>
+         
+             </div>
+          </div>
+          <!--end of col-md-9 -->
+          <!--strart col-md-3 (side bar)-->
+          <aside class="col-md-3 sidebar97239">
+              <div class="status-part3821">
+                  <h4>Statistics</h4> <a href="#"><i class="fa fa-question-circle" aria-hidden="true"> Question({{P}})</i></a> <i class="fa fa-comment" aria-hidden="true"> Answers({{C}})</i> </div>
+              <div class="categori-part329">
+                  <h4>Category</h4>
+                  <ul class="list-unstyled">
+                    <b> <li><a href="{% url 'core:category3' 'Business' %}" title="">Business <span class="pull-right"></span></a></li></b>
+                    <b>	<li><a href="{% url 'core:category3' 'technology' %}" title="">Technology <span class="pull-right"></span></a></li></b>
+                    <b>	<li><a href="{% url 'core:category3' 'maths' %}" title="">Maths <span class="pull-right"></span></a></li></b>
+                    <b>	<li><a href="{% url 'core:category3' 'Economics' %}" title="">Economics <span class="pull-right"></span></a></li></b>
+                    <b>	<li><a href="{% url 'core:category3' 'Medical' %}" title="">Medicine <span class="pull-right"></span></a></li></b>
+                    <b>	<li><a href="{% url 'core:category3' 'life science' %}" title="">Life Science <span class="pull-right"></span></a></li></b>
+                    <b>	<li><a href="{% url 'core:category3' 'Education' %}" title="">Education<span class="pull-right"></span></a></li></b>
+                      <b><li><a href="{% url 'core:category3' 'Chemistry' %}" title="">Chemistry<span class="pull-right"></span></a></li></b>
+                    <b>	<li><a href="{% url 'core:category3' 'physics' %}" title="">Physics<span class="pull-right"></span></a></li></b>
+                    <b>  <li><a href="{% url 'core:category3' 'music' %}" title="">Music<span class="pull-right"></span></a></li></b>
+                     <b> <li><a href="{% url 'core:category3' 'Art' %}" title="">Arts<span class="pull-right"></span></a></li></b>
+                  <b>		<li><a href="{% url 'core:category3' 'agriculture' %}" title="">Agriculture<span class="pull-right"></span></a></li></b>
+                  </ul>
+              </div>
+              <!--             social part -->
+              <div class="social-part2189">
+                  <h4>Find us</h4>
+                  <li class="rss-one">
+                      <a href="#" target="_blank"> <strong>
+<span>Subscribe</span>
+<i class="fa fa-rss" aria-hidden="true"></i>
+
+<br>
+
+</strong> </a>
+                  </li>
+                  <li class="facebook-two">
+                      <a href="#" target="_blank"> <strong>
+<span>Subscribe</span>
+<i class="fa fa-facebook" aria-hidden="true"></i>
+
+<br>
+<small>To Facebook Feed</small>
+
+</strong> </a>
+                  </li>
+                  <li class="twitter-three">
+                      <a href="#" target="_blank"> <strong>
+<span>Subscribe</span>
+<i class="fa fa-twitter" aria-hidden="true"></i>
+
+<br>
+
+</strong> </a>
+                  </li>
+                  <li class="youtube-four">
+                      <a href="#" target="_blank"> <strong>
+<span>Subscribe</span>
+<i class="fa fa-youtube" aria-hidden="true"></i>
+
+<br>
+
+</strong> </a>
+                  </li>
+              </div>
+        <!--
+              <div class="login-part2389">
+                  <h4>Login</h4>
+                  <div class="input-group300"> <span><i class="fa fa-user" aria-hidden="true"></i></span>
+                      <input type="text" class="namein309" placeholder="Username"> </div>
+                  <div class="input-group300"> <span><i class="fa fa-lock" aria-hidden="true"></i></span>
+                      <input type="password" class="passin309" placeholder="Name"> </div>
+                  <a href="#">
+                      <button type="button" class="userlogin320">Log In</button>
+                  </a>
+                  <div class="rememberme">
+                      <label>
+                          <input type="checkbox" checked="checked"> Remember Me</label> <a href="#" class="resbutton3892">Register</a> </div>
+              </div>
+              <div class="highest-part302">
+                  <h4>Highest Points</h4>
+                  <div class="pints-wrapper">
+                      <div class="left-user3898">
+                          <a href="#"><img src="image/images.png" alt="Image"></a>
+                          <div class="imag-overlay39"> <a href="#"><i class="fa fa-plus" aria-hidden="true"></i></a> </div>
+                      </div> <span class="points-details938">
+<a href="#"><h5>Ahmed Hasan</h5></a>
+<a href="#" class="designetion439">Pundit</a>
+<p>206 points</p>
+</span> </div>
+                  <hr>
+                  <div class="pints-wrapper">
+                      <div class="left-user3898">
+                          <a href="#"><img src="image/images.png" alt="Image"></a>
+                          <div class="imag-overlay39"> <a href="#"><i class="fa fa-plus" aria-hidden="true"></i></a> </div>
+                      </div> <span class="points-details938">
+<a href="#"><h5>Ahmed Hasan</h5></a>
+<a href="#" class="designetion439">Pundit</a>
+<p>206 points</p>
+</span> </div>
+                  <hr>
+                  <div class="pints-wrapper">
+                      <div class="left-user3898">
+                          <a href="#"><img src="image/images.png" alt="Image"></a>
+                          <div class="imag-overlay39"> <a href="#"><i class="fa fa-plus" aria-hidden="true"></i></a> </div>
+                      </div> <span class="points-details938">
+<a href="#"><h5>Ahmed Hasan</h5></a>
+<a href="#" class="designetion439">Pundit</a>
+<p>206 points</p>
+</span> </div>
+                  <hr>
+                  <div class="pints-wrapper">
+                      <div class="left-user3898">
+                          <a href="#"><img src="image/images.png" alt="Image"></a>
+                          <div class="imag-overlay39"> <a href="#"><i class="fa fa-plus" aria-hidden="true"></i></a> </div>
+                      </div> <span class="points-details938">
+<a href="#"><h5>Ahmed Hasan</h5></a>
+<a href="#" class="designetion439">Pundit</a>
+<p>206 points</p>
+</span> </div>
+                  <hr>
+                  <div class="pints-wrapper">
+                      <div class="left-user3898">
+                          <a href="#"><img src="image/images.png" alt="Image"></a>
+                          <div class="imag-overlay39"> <a href="#"><i class="fa fa-plus" aria-hidden="true"></i></a> </div>
+                      </div> <span class="points-details938">
+<a href="#"><h5>Ahmed Hasan</h5></a>
+<a href="#" class="designetion439">Pundit</a>
+<p>206 points</p>
+</span> </div>
+              </div>
+                  start tags part
+              <div class="tags-part2398">
+                  <h4>Tags</h4>
+                  <ul>
+                      <li><a href="#">analytics</a></li>
+                      <li><a href="#">Computer</a></li>
+                      <li><a href="#">Developer</a></li>
+                      <li><a href="#">Google</a></li>
+                      <li><a href="#">Interview</a></li>
+                      <li><a href="#">Programmer</a></li>
+                      <li><a href="#">Salary</a></li>
+                      <li><a href="#">University</a></li>
+                      <li><a href="#">Employee</a></li>
+                  </ul>
+              </div>
+            
+              <div class="recent-post3290">
+                  <h4>Recent Post</h4>
+                  <div class="post-details021"> <a href="#"><h5>How much do web developers</h5></a>
+                      <p>I am thinking of pursuing web developing as a career & was ...</p> <small style="color: #848991">July 16, 2017</small> </div>
+                  <hr>
+                  <div class="post-details021"> <a href="#"><h5>How much do web developers</h5></a>
+                      <p>I am thinking of pursuing web developing as a career & was ...</p> <small style="color: #848991">July 16, 2017</small> </div>
+                  <hr>
+                  <div class="post-details021"> <a href="#"><h5>How much do web developers</h5></a>
+                      <p>I am thinking of pursuing web developing as a career & was ...</p> <small style="color: #848991">July 16, 2017</small> </div>
+              </div>
+          </aside>
+      </div>
+  </div>
+</section>
+    
+<div class="footer-search">
+  <div class="container">
+      <div class="row">
+          <div id="custom-search-input">
+              <div class="input-group col-md-12"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                  <input type="text" class="  search-query form-control user-control30" placeholder="Search here...." /> <span class="input-group-btn">
+<button class="btn btn-danger" type="button">
+  <span class=" glyphicon glyphicon-search"></span> </button>
+                  </span>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<section class="footer-part">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-3">
+              <div class="info-part-one320">
+                  <h4>Where We Are ?</h4>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi adipiscing gravida odio, sit amet suscipit risus ultrices eu.</p>
+                  <h4>Address :</h4>
+                  <p>Ask Me Network, 33 Street, syada
+                      <br> Zeinab, Cairo, Egypt.</p>
+                  <h4>Support :</h4>
+                  <p>Support Telephone No : (+2)01111011110</p>
+                  <p>Support Email Account : </p>
+                  <p>info@example.com</p>
+              </div>
+          </div>
+          <div class="col-md-3">
+              <div class="info-part-two320">
+                  <h4>Quick Links</h4>
+                  <a href="#">
+                      <p>-Home</p>
+                  </a>
+                  <a href="#">
+                      <p>-Ask Question</p>
+                  </a>
+                  <a href="#">
+                      <p>-Questions</p>
+                  </a>
+                  <a href="#">
+                      <p>-Users</p>
+                  </a>
+                  <a href="#">
+                      <p>-Edit Profile</p>
+                  </a>
+                  <a href="#">
+                      <p>-Page</p>
+                  </a>
+                  <a href="#">
+                      <p>-Contact Us</p>
+                  </a>
+                  <a href="#" class="last-child12892">
+                      <p>-Buy now</p>
+                  </a>
+              </div>
+          </div>
+          <div class="col-md-3">
+              <div class="info-part-three320">
+                  <h4>Popular Questions</h4>
+                  <div class="news-info209">
+                      <h5>Why are the British confused</h5>
+                      <p>(Why I darest say, they darest not get offended when they so ...</p> <small>July 16, 2017</small> </div>
+                  <div class="news-info209">
+                      <h5>How to approach applying for</h5>
+                      <p>(I am trying to find/change my career trajectory. Its a good cozy ...</p> <small>July 16, 2017</small> </div>
+                  <div class="news-info209">
+                      <h5>How to evaluate whether a</h5>
+                      <p>A friend of mine is the CEO of his own small business. ...</p> <small>July 16, 2017</small> </div>
+              </div>
+          </div>
+          <div class="col-md-3">
+              <div class="info-part-four320">
+                  <h4>Latest Tweets</h4>
+                  <div class="tweet-details29">
+                      <p><i class="fa fa-twitter-square" aria-hidden="true"></i><a href="#"> codeThemesCheck a new update #AskMe #ThemeForest #WordPress #2code #Envato#2code
+Themehttps://t.co/urb3LgsOCi</a></p> <small>about 2 weeks ago</small> </div>
+                  <div class="tweet-details29">
+                      <p><i class="fa fa-twitter-square" aria-hidden="true"></i><a href="#"> codeThemesCheck a new update #AskMe #ThemeForest #WordPress #2code #Envato#2code
+Themehttps://t.co/urb3LgsOCi</a></p> <small>about 2 weeks ago</small> </div>
+                  <div class="tweet-details29">
+                      <p><i class="fa fa-twitter-square" aria-hidden="true"></i><a href="#"> codeThemesCheck a new update #AskMe #ThemeForest #WordPress #2code #Envato#2code
+Themehttps://t.co/urb3LgsOCi</a></p> <small>about 2 weeks ago</small> </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>-->
+<section class="footer-social">
+  
+</section>
+
+
+
+
+
+
+{% endblock %}

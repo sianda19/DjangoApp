@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}<br>
+<script>
+
+function copyElementText(id) {
+    var text = document.getElementById(id).innerText;
+    var elem = document.createElement("textarea");
+    document.body.appendChild(elem);
+    elem.value = text;
+    elem.select();
+    document.execCommand("copy");
+    document.body.removeChild(elem);
+}
+    
+</script>    
+
+<a href="#"><h3 title="Copy Text" id="text" onclick="copyElementText(this.id)" >{{code.code}}</h3></a>
+<button onclick="copyElementText('text')">Copy</button><br>
+{% endblock %}
+

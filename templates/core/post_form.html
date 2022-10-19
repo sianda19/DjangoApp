@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="title" content="Ask online Form">
+  <meta name="description" content="The Ask is a bootstrap design help desk, support forum website template coded and designed with bootstrap Design, Bootstrap, HTML5 and CSS. Ask ideal for wiki sites, knowledge base sites, support forum sites">
+  <meta name="keywords" content="HTML, CSS, JavaScript,Bootstrap,js,Forum,webstagram ,webdesign ,website ,web ,webdesigner ,webdevelopment">
+  <meta name="robots" content="index, nofollow">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="English">
+  <title>Ask Me</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=AM_CHTML"></script>
+  <link href="{% static 'css/editor.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">
+  <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" type="text/css"> </head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+
+    .content-box {
+      height: 550px;
+      padding: 20px;
+      border: 2px solid black;
+      width: 90%;
+      display: flex;
+      align-self: flex-end;
+
+
+    }
+
+    .card-img-top{
+      display: none;
+  }
+
+  .card {
+    height:300px;
+    width:680px;
+    border: 1px solid red;
+
+  }
+
+  .ques-details10018 {
+    margin-top: 10px;
+     overflow: hidden;
+     -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+     display: -webkit-box;
+     -webkit-line-clamp: unset;
+     -webkit-box-orient: vertical;
+ }
+
+ 
+ .overlay {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  /*background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);*/
+  background-color:white;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: black;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+  </style>
+<script>
+function op(){
+  
+  var currentLocation = window.location.href;
+   console.log(currentLocation)
+   if (currentLocation.includes("created")){
+    document.getElementById('id_content').style.display = 'none';
+    document.getElementById('text2').style.display = 'none';
+
+  } else {
+ 
+}
+}
+
+
+  function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+  }
+  
+  function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+  }
+
+</script>
+<body onload="op()">
+  <div class="top-menu-bottom932">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                <a class="fa fa-graduation-cap" style="font-size:80px; color:white;" href="#">Ask?</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav"> </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="{% url 'core:views' %}"> Questions </a></li>
+                   
+                    <li><div class="dropdown">
+                      {% if bell.count > 0 %}
+                      <p onclick="myFunction()" class="notification"> <span>Solutions</span> <span class="badge">{{bell.count}}</span> </p>
+                      {% else %}
+                      <p onclick="myFunction()" class="notification"> <span>Solutions</span> <span class="badge"></span> </p>
+                      {% endif %}
+                      <div id="myDropdown" class="dropdown-content">
+                        {% for i in bell %}
+                        <a href="{% url 'core:see' i.verb i.id  %}">{{i.description}}</a>
+                        {% endfor %}
+                      </div>
+                    </div></li>
+                    {% if request.user.is_authenticated %}
+                    <li> 
+                      <li><a href=" {% url 'users:logout' %} " >Log Out</a></li>
+                    </li>
+                    <li> 
+                      <li><a href="{% url 'users:profile' request.user.username %}  " >Profile</a></li>
+                    </li>
+                    <li> 
+                    </li>
+                    <li> 
+                    </li>
+                    {% if request.user.is_superuser %}
+                    <li> 
+                      <li><a href="admin" >Admin </a></li>
+                    </li>
+
+                    {% else %}
+                    {% endif %}
+                    <li> 
+                    </li>
+                    {% if count > 2 %}
+                    <li> 
+                      <li><a href="" onclick="warn()">Ask Question</a></li>
+                    </li>
+                    {% else %}
+                    <li> 
+                      <li><a href="{% url 'core:post_create' %}  " >Ask Question</a></li>
+                    </li>
+                    {% endif %}
+                    {% else %}
+                    <li> 
+                      <li><a href=" {% url 'users:login' %}  " >Log In</a></li>
+                    </li>
+                    <li> 
+                      <li><a href=" {% url 'users:signup' %} " >Sign Up</a></li>
+                    </li>
+                    
+                    {% endif %}
+
+                        <ul class="dropdown-menu animated zoomIn">
+                            
+                        </ul>
+                    </li>
+                   
+                        <ul class="dropdown-menu animated zoomIn">
+                        </ul>
+                    </li>
+                        <ul class="dropdown-menu animated zoomIn">
+                            <li><a href="logIn.html">Login</a></li>
+                            
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+</div>
+
+
+<style>
+  .footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+  </style>
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+        {{v}}
+        <p></p>
+        <h2 class=" my-5">Ask Questions</h2>
+      
+        <form method="post" enctype="multipart/form-data" name="myForm">
+          {% csrf_token %}
+  
+          <!--<div class="form-group"> onsubmit="return validateForm()" 
+            <p>Grade</p>
+            <input type="text" class="form-control {% if form.title.errors %}is-invalid{% endif %}" id="id_title"
+              placeholder="Grade" name="title" value='{{ form.title.value|default:"" }}'>
+            {% if form.title.errors %}
+            <div class="invalid-feedback">{{ form.title.errors }}</div>
+            {% endif %}
+          </div>-->
+          <select name="sub" id="myselect">
+            <option value="Maths">Maths</option>
+            <option value="Life Science">Life science</option>
+            <option value="Physics">Physics</option>
+            <option value="Natural Science">Natural Science</option>
+            <option value="Geography">Geography</option>
+            <option value="Maths Literacy">Maths Literacy</option>
+            <option value="Technology">Technology</option>
+            <option value="Accounting">Accounting</option>
+            <option value="EMS">EMS</option>
+            <option value="Nursing">Nursing</option>
+            <option value="Music">Music</option>
+            <option value="Medical">Medical</option>
+            <option value="Economics">Economics</option>
+            <option value="Law">Law</option>
+            <option value="Chemistry">Chemistry</option>
+            <option value="Education">Education</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Psychology">Psychology</option>
+            <option value="Pharmacy">Pharmacy</option>
+            <option value="Business">Business Administration</option>
+            <option value="Statistics">Statistics</option>
+            <option value="Art">Art</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Accounting">Accounting</option>
+            <option value="Architecture">Architecture</option>
+            <option value="Hospitality ">Hospitality </option>
+            <option value="Finance">Finance</option>
+            <option value="Agriculture">Agriculture</option>
+            <option value="Other">Other</option>
+            <option value="Journalism and Mass Communication">Journalism and Mass Communication</option>
+          </select>
+
+          <select name="title" id="myselect">
+            <option value="Grade4">Grade 4</option>
+            <option value="Grade5">Grade 5</option>
+            <option value="Grade6">Grade 6</option>
+            <option value="Grade7">Grade 7</option>
+            <option value="Grade8">Grade 8</option>
+            <option value="Grade9">Grade 9</option>
+            <option value="Grade10">Grade 10</option>
+            <option value="Grade11">Grade 11</option>
+            <option value="Grade12">Grade 12</option>
+            <option value="Tetiary">Tetiary</option> 
+            <option value="Other">Other</option> 
+          </select>
+        <!--  <a href="{% url 'core:add' %}" class="">Test equation</a>
+          <button class="" onclick="check()">Backticks</button><br>
+          <div class="form-group"><br><br>
+            <input type="text" class="form-control {% if form.topic.errors %}is-invalid{% endif %}" id="id_title"
+              placeholder="Topic or description" name="topic" value=''>
+            {% if form.topic.errors %}
+            <div class="invalid-feedback">{{ form.topic.errors }}</div>
+            {% endif %}
+          </div>
+        -->
+        <br>
+          <div class="form-group">
+            <br>
+            <p id="text2">Statement and Question </p>
+            <textarea type="text" class="form-control {% if form.content.errors %}is-invalid{% endif %}" id="id_content"
+              name="content" cols="150" rows="5">{{ form.content.value|default:"" }}</textarea>
+            {% if form.content.errors %}
+            <div class="invalid-feedback">{{ form.content.errors }}</div>
+            {% endif %}
+          </div>
+  
+          {{ form.image.label_tag }}
+            <input type="file" class="{% if form.image.errors %}is-invalid{% endif %}" id="id_image" name="image"
+              accept="image/*">
+            {% if form.image.errors %}
+            <div class="invalid-feedback">{{ form.image.errors }}</div>
+            {% endif %}
+          </div>
+  
+         <!-- <div class="form-group">
+            {{ form.tags.label_tag }}<br>
+            <select class="custom-select w-25" name="tags" id="id_tags" multiple>
+              {% for name, value in form.tags.field.choices %}
+              <option value="{{ name }}">{{ value }}</option>
+              {% endfor %}
+            </select>
+            {% if form.tags.errors %}
+            <div class="invalid-feedback">{{ form.tags.errors }}</div>
+            {% endif %}
+          </div>
+          <a class='btn btn-primary' onclick="openNav()"> Ask Question ...</a>
+          <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="overlay-content"><br>-->
+              <button type="submit" id="submit" class="btn btn-primary">
+                {% if update %}Update the post{% else %}Ask Question{% endif %}
+              </button>
+           <!--</div>
+          </div>
+         <button type="submit" id="submit" class="btn btn-primary">
+            {% if update %}Update the post{% else %}Ask Question{% endif %}
+          </button>-->
+        </form>
+  
+      </div>
+    </div>
+  </div>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+      <script src="{% static 'js/editor.js' %}"></script>
+   	<script>
+			$(document).ready(function() {
+				$("#txtEditor").Editor();
+			});
+		</script>
+  
+</body>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<center><div class="foot">
+  <h5 style="color:grey;">Copyright 2022. All Rights Reserved.</h5> 
+  <h5 style="color:grey;">Ask?.com</h5> 
+  <div style="color:grey;">
+  </div></center>
+
+</html>

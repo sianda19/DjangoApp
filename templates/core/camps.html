@@ -1,0 +1,338 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+.box{
+    width:500px;
+    height:260px;
+    border:2px solid red;
+
+}
+
+.text{
+    width:100px;
+    height:300px;
+}
+
+</style>
+
+<br><br>
+<label>Start New Campaign </label><br>
+
+<form action="submit_camp" onsubmit=" " method="post">
+    {% csrf_token %}
+    <select class="id" name="sub" id="myselect">
+      <option value="Maths">Maths</option>
+      <option value="Life Science">Life science</option>
+      <option value="Physics">Physics</option>
+      <option value="Natural Science">Natural Science</option>
+      <option value="Geography">Geography</option>
+      <option value="Maths Literacy">Maths Literacy</option>
+      <option value="Technology">Technology</option>
+      <option value="Accounting">Accounting</option>
+      <option value="EMS">EMS</option>
+      <option value="Nursing">Nursing</option>
+      <option value="Music">Music</option>
+      <option value="Medical">Medical</option>
+      <option value="Economics">Economics</option>
+      <option value="Law">Law</option>
+      <option value="Chemistry">Chemistry</option>
+      <option value="Education">Education</option>
+      <option value="Engineering">Engineering</option>
+      <option value="Psychology">Psychology</option>
+      <option value="Pharmacy">Pharmacy</option>
+      <option value="Business">Business Administration</option>
+      <option value="Statistics">Statistics</option>
+      <option value="Art">Art</option>
+      <option value="Computer Science">Computer Science</option>
+      <option value="Accounting">Accounting</option>
+      <option value="Architecture">Architecture</option>
+      <option value="Hospitality ">Hospitality </option>
+      <option value="Finance">Finance</option>
+      <option value="Agriculture">Agriculture</option>
+      <option value="Other">Other</option>
+      <option value="Journalism and Mass Communication">Journalism and Mass Communication</option>
+      </select>
+
+      <select class="id" name="grade" id="myselect">
+        <option value="Grade4">Grade 4</option>
+        <option value="Grade5">Grade 5</option>
+        <option value="Grade6">Grade 6</option>
+        <option value="Grade7">Grade 7</option>
+        <option value="Grade8">Grade 8</option>
+        <option value="Grade9">Grade 9</option>
+        <option value="Grade10">Grade 10</option>
+        <option value="Grade11">Grade 11</option>
+        <option value="Grade12">Grade 12</option>
+        <option value="Tetiary">Tetiary</option> 
+        <option value="Other">Other</option>
+      </select> 
+
+
+      <select class="id" name="lev" id="myselect">
+        <option value="Introduction">Introduction</option>
+        <option value="beginner">beginner</option>
+        <option value="Junior">Junior</option>  
+        <option value="Advanced">Advanced</option>    
+      </select> 
+
+      <textarea type="text" size="24"  name="des" placeholder="description"></textarea>
+
+      <input type="text"  name="lan" placeholder="Language"></input>
+
+
+<input value="submit" type="submit">
+</form><br><br>
+
+<label> Search Campaign </label>
+<form action="search12" onsubmit=" " method="post">
+    {% csrf_token %}
+    <select class="id" name="sub" id="myselect">
+      <option value="Maths">Maths</option>
+      <option value="Life Science">Life science</option>
+      <option value="Physics">Physics</option>
+      <option value="Natural Science">Natural Science</option>
+      <option value="Geography">Geography</option>
+      <option value="Maths Literacy">Maths Literacy</option>
+      <option value="Technology">Technology</option>
+      <option value="Accounting">Accounting</option>
+      <option value="EMS">EMS</option>
+      <option value="Nursing">Nursing</option>
+      <option value="Music">Music</option>
+      <option value="Medical">Medical</option>
+      <option value="Economics">Economics</option>
+      <option value="Law">Law</option>
+      <option value="Chemistry">Chemistry</option>
+      <option value="Education">Education</option>
+      <option value="Engineering">Engineering</option>
+      <option value="Psychology">Psychology</option>
+      <option value="Pharmacy">Pharmacy</option>
+      <option value="Business">Business Administration</option>
+      <option value="Statistics">Statistics</option>
+      <option value="Art">Art</option>
+      <option value="Computer Science">Computer Science</option>
+      <option value="Accounting">Accounting</option>
+      <option value="Architecture">Architecture</option>
+      <option value="Hospitality ">Hospitality </option>
+      <option value="Finance">Finance</option>
+      <option value="Agriculture">Agriculture</option>
+      <option value="Other">Other</option>
+      <option value="Journalism and Mass Communication">Journalism and Mass Communication</option>
+      </select>
+
+      <select class="id" name="grade" id="myselect">
+        <option value="Grade4">Grade 4</option>
+        <option value="Grade5">Grade 5</option>
+        <option value="Grade6">Grade 6</option>
+        <option value="Grade7">Grade 7</option>
+        <option value="Grade8">Grade 8</option>
+        <option value="Grade9">Grade 9</option>
+        <option value="Grade10">Grade 10</option>
+        <option value="Grade11">Grade 11</option>
+        <option value="Grade12">Grade 12</option>
+        <option value="Tetiary">Tetiary</option> 
+        <option value="Other">Other</option>
+      </select> 
+      <select class="id" name="lev" id="myselect">
+        <option value="Introduction">Introduction</option>
+        <option value="beginner">beginner</option>
+        <option value="Junior">Junior</option>  
+        <option value="Advanced">Advanced</option>    
+      </select> 
+
+      <textarea type="text"  name="des" placeholder="description"></textarea>
+
+      <input type="text"  name="lan" placeholder="Language"></input>
+
+<input value="submit" type="submit">
+</form><br><br>
+
+<a href="my"><button style="background-color:black; color:white;">My classes</button></a>
+<section class="main-content920">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div id="main">
+                    <input id="tab1" type="radio" name="tabs" checked>
+                   <!-- <input id="tab2" type="radio" name="tabs">
+                    <label for="tab2">Most Response</label>
+                    <input id="tab3" type="radio" name="tabs">
+                    <label for="tab3">Recently Answered</label>
+                    <input id="tab4" type="radio" name="tabs">
+                    <label for="tab4">No Answer</label>
+                    <input id="tab5" type="radio" name="tabs">
+                    <label for="tab5">Recent Post</label>-->
+                    
+                
+                    
+                    <section id="content1">
+                           <!--Recent Question Content Section -->
+                           {% for camp in  object_list %}
+
+                        <div class="question-type2033" style="border:2px solid red;">
+  
+                            <div class="row">
+  
+                                <div class="col-md-1">
+  
+                                    <div class="left-user12923 left-user12923-repeat">
+                                        <a href="#"> </a> <a href="#"><i class="fa fa-user" style="font-size:24px" aria-hidden="true"></i></a> </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="right-description893">
+                                        <div id="que-hedder2983">
+                                            <h3><a href="post-deatils.html" target="_blank"> </a></h3> </div>
+                                            <div class="ques-details10018">
+                                              <p></p>
+                                          </div>
+                                          {% if camp.votes > 2 %}
+                                          <a href="{% url 'core:class' camp.id %}"><button>Classes</button></a>
+                                          {% endif %}
+                                          <hr>
+                                          <i><h4>Author:{{camp.author}}</h4></i>
+                                          <i><h4>Corse:{{camp.subject}}</h4></i>
+                                          <i><h4>Level:{{camp.level}}</h4></i>
+                                          <i><h4>Description:{{camp.description}}</h4></i>
+                                          <i><h4>votes:{{camp.votes}}</h4></i>
+                                          <i><h4>Grade:{{camp.grade}}</h4></i>
+                                          <i><h4>Language:{{camp.language}}</h4></i>
+
+                                      </div>
+                                      <a href="{% url 'core:vote' camp.id %}"><button>Vote</button></a>
+
+                                  </div>   
+                                <div class="col-md-2">
+                                    <div class="ques-type302">
+                                        <a href="#">
+                                        </a>
+                                        <a href="#">
+                                        </a>
+                                    </div>
+  
+                                </div><br>
+                            </div>
+  
+                        </div>
+                        {% endfor %}
+  
+                        <nav aria-label="Page navigation">
+                          <ul class="pagination">
+  
+                            {% if object_list.has_previous %}
+                            <li class="page-item">
+                              <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                            </li>
+                            {% else %}
+                            <li class="page-item disabled">
+                              <a class="page-link" href="#">Previous</a>
+                            </li>
+                            {% endif %}
+                      
+                            {% for i in object_list.paginator.page_range %}
+                            <li class=" page-item {% if page_obj.number == i %}active{% endif %}">
+                                <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+                            </li>
+                            {% endfor %}
+                    
+                            {% if object_list.has_next %}
+                            <li class="page-item">
+                              <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                            </li>
+                            {% else %}
+                            <li class="page-item disabled">
+                              <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                            </li>
+                           {% endif %}
+                          </ul>
+                        </nav>        <!--End of content-5-->
+                      
+                    </section>
+           
+               </div>
+            </div>
+            <!--end of col-md-9 -->
+            <!--strart col-md-3 (side bar)-->
+            <aside class="col-md-3 sidebar97239">
+                <div class="status-part3821">
+                    <h4>Statistics</h4> <a href="#"><i class="fa fa-question-circle" aria-hidden="true"> Question({{P}})</i></a> <i class="fa fa-comment" aria-hidden="true"> Answers({{C}})</i> </div>
+                <div class="categori-part329">
+                    <h4>Category</h4>
+                    <ul class="list-unstyled">
+                      <b> <li><a href="{% url 'core:category2' 'Business' %}" title="">Business <span class="pull-right"></span></a></li></b>
+                      <b>	<li><a href="{% url 'core:category2' 'technology' %}" title="">Technology <span class="pull-right"></span></a></li></b>
+                      <b>	<li><a href="{% url 'core:category2' 'maths' %}" title="">Maths <span class="pull-right"></span></a></li></b>
+                      <b>	<li><a href="{% url 'core:category2' 'Economics' %}" title="">Economics <span class="pull-right"></span></a></li></b>
+                      <b>	<li><a href="{% url 'core:category2' 'Medical' %}" title="">Medicine <span class="pull-right"></span></a></li></b>
+                      <b>	<li><a href="{% url 'core:category2' 'life science' %}" title="">Life Science <span class="pull-right"></span></a></li></b>
+                      <b>	<li><a href="{% url 'core:category2' 'Education' %}" title="">Education<span class="pull-right"></span></a></li></b>
+                        <b><li><a href="{% url 'core:category2' 'Chemistry' %}" title="">Chemistry<span class="pull-right"></span></a></li></b>
+                      <b>	<li><a href="{% url 'core:category2' 'physics' %}" title="">Physics<span class="pull-right"></span></a></li></b>
+                      <b>  <li><a href="{% url 'core:category2' 'music' %}" title="">Music<span class="pull-right"></span></a></li></b>
+                       <b> <li><a href="{% url 'core:category2' 'Art' %}" title="">Arts<span class="pull-right"></span></a></li></b>
+                    <b>		<li><a href="{% url 'core:category2' 'agriculture' %}" title="">Agriculture<span class="pull-right"></span></a></li></b>
+                    </ul>
+                </div>
+                <!--             social part -->
+                <div class="social-part2189">
+                    <h4>Find us</h4>
+                    <li class="rss-one">
+                        <a href="#" target="_blank"> <strong>
+  <span>Subscribe</span>
+  <i class="fa fa-rss" aria-hidden="true"></i>
+  
+  <br>
+  
+  </strong> </a>
+                    </li>
+                    <li class="facebook-two">
+                        <a href="#" target="_blank"> <strong>
+  <span>Subscribe</span>
+  <i class="fa fa-facebook" aria-hidden="true"></i>
+  
+  <br>
+  <small>To Facebook Feed</small>
+  
+  </strong> </a>
+                    </li>
+                    <li class="twitter-three">
+                        <a href="#" target="_blank"> <strong>
+  <span>Subscribe</span>
+  <i class="fa fa-twitter" aria-hidden="true"></i>
+  
+  <br>
+  
+  </strong> </a>
+                    </li>
+                    <li class="youtube-four">
+                        <a href="#" target="_blank"> <strong>
+  <span>Subscribe</span>
+  <i class="fa fa-youtube" aria-hidden="true"></i>
+  
+  <br>
+  
+  </strong> </a>
+                    </li>
+                </div>
+      
+  <section class="footer-social">
+    
+  </section>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}
