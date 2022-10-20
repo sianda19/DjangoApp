@@ -133,6 +133,11 @@
                                         <hr>
                                         <div class="ques-icon-info3293"></i> </a>  <a href="#"><i class="fa fa-clock-o" aria-hidden="true"> asked: {{ post.created_on|date:"N j Y" }}  </i></a> <a href="#"><!--<i class="fa fa-map-marker  " aria-hidden="true">{{ post.country}} , {{ post.province}} , {{ post.place}} , {{ post.school}} , {{ post.grade}}--> </i></a>  </div>
                                         
+                                        {% if post.comment_set.count > 0 %}    
+                                             Answers:{{ post.comment_set.count }} 
+                                          {% else %}
+                                          {% endif %}
+                                           <br><br>
                                            {% if user.is_authenticated %}
                                         <a class='btn' href="{% url 'core:post' post.id post.slug %}">Solution</a>
                                         {% else %}
