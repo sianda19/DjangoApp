@@ -32,13 +32,15 @@ SECRET_KEY = 'zi1t41j8by5t(@w74=%h8q7a(b4^8))+td$@vwso!2^19w-(2q'
 #SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-#DEBUG = os.getenv("DEBUG", "False") == "True"
+#DEBUG = True
+DEBUG = False
 
 #DEBUG404 = True
 #ALLOWED_HOSTS = ['137.184.239.142']
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+
+#ALLOWED_HOSTS = ['localhost','127.0.0.1']
 #DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
 # Application definition
@@ -63,8 +65,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-   # 'whitenoise.middleware.WhiteNoiseMiddleware',
-
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.security.SecurityMiddleware',
 ]
 
 ROOT_URLCONF = 'blog.urls'
@@ -88,6 +90,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'blog.wsgi.application'
 
 
+import dj_database_url 
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
+
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 '''DATABASES = {
@@ -99,8 +105,7 @@ WSGI_APPLICATION = 'blog.wsgi.application'
         'HOST': 'localhost',
         'PORT': '',
     }
-}'''
-
+}
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -111,7 +116,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
+'''
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -165,19 +170,33 @@ STATICFILES_DIRS = (
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
+#STATIC_URL = '/static/'
+
+#TATICFILES_DIRS = (
+  #  os.path.join(BASE_DIR, 'static'),
+#)
+
+#MEDIA_URL = '/media/'
+
+#MEDIAFILES_DIRS = (
+ #   os.path.join(BASE_DIR, 'media'),
+#)
+
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.11/howto/static-files/
+PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
+STATIC_ROOT  =   os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
 
+# Extra lookup directories for collectstatic to find static files
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(PROJECT_ROOT, 'static'),
 )
 
-MEDIA_URL = '/media/'
-
-MEDIAFILES_DIRS = (
-    os.path.join(BASE_DIR, 'media'),
-)
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#  Add configuration for static files storage using whitenoise
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_USE_TLS = True

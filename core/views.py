@@ -655,7 +655,7 @@ class HomeView(ListView):
         except:
            return render(request,
                   'core/home.html',
-                  {'page': page,'P':post_count,'C':comment  })
+                  {'page': page,'P':post_count,'C':comment ,'object_list': post_list})
 
 from django.contrib import messages
 from .models import validate

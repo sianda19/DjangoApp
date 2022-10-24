@@ -7,9 +7,9 @@ class User(AbstractUser):
     email = models.EmailField('email address',unique=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ["username"]
+    is_verified = models.BooleanField(default=False)
     number = models.IntegerField(default=000000000000)
     phone = models.BigIntegerField(default=0000000000000 )
-
 
 class Profile(models.Model):
     about_me = models.TextField()
