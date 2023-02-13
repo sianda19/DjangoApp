@@ -35,10 +35,10 @@ SECRET_KEY = 'zi1t41j8by5t(@w74=%h8q7a(b4^8))+td$@vwso!2^19w-(2q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 #DEBUG = os.getenv("DEBUG", "False") == "True"
+ALLOWED_HOSTS=[".vercel.app"]
 
 #DEBUG404 = True
 #ALLOWED_HOSTS = ['137.184.239.142']
-ALLOWED_HOSTS=[".vercel.app"]
 #ALLOWED_HOSTS = ['askhelp4sho.herokuapp.com']
 #DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
