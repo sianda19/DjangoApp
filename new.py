@@ -9,7 +9,7 @@ def multiply_each_number(list1):
     return Emty
 
 
-
+#sjbdfbkjsblkjfbkdsjfl sjhfej fhoajnfklj ajfh abfilabf ae
 
 
 mylist = [1,3]
