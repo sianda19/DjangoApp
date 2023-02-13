@@ -38,8 +38,8 @@ DEBUG = True
 
 #DEBUG404 = True
 #ALLOWED_HOSTS = ['137.184.239.142']
-
-ALLOWED_HOSTS = ['askhelp4sho.herokuapp.com']
+ALLOWED_HOSTS=[".vercel.app"]
+#ALLOWED_HOSTS = ['askhelp4sho.herokuapp.com']
 #DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
 
 # Application definition
