@@ -119,9 +119,12 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
 
 AUTH_USER_MODEL = 'users.User'
-
-STATICFILES_DIRS = [BASE_DIR/'static',]
-STATIC_ROOT = BASE_DIR/'staticfiles'
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
