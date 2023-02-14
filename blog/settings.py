@@ -15,13 +15,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 
 import os
-#from django.core.management.utils import get_random_secret_key
 
-#import os
-#mport sys
-#import dj_database_url
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
@@ -34,15 +28,8 @@ SECRET_KEY = 'zi1t41j8by5t(@w74=%h8q7a(b4^8))+td$@vwso!2^19w-(2q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-#DEBUG = os.getenv("DEBUG", "False") == "True"
-ALLOWED_HOSTS=[".vercel.app"]
 
-#DEBUG404 = True
-#ALLOWED_HOSTS = ['137.184.239.142']
-#ALLOWED_HOSTS = ['askhelp4sho.herokuapp.com']
-#DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "False") == "True"
-
-# Application definition
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -91,32 +78,12 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-'''DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'myproject',
-        'USER': 'myprojectuser',
-        'PASSWORD': '123456kitu',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}'''
 
-import dj_database_url 
-prod_db  =  dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
 
+DATABASES = {}
+
+#fgergfdsjnrfkl;gmdlfmkrkl;
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -150,60 +117,21 @@ USE_L10N = True
 USE_TZ = True
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
-# Static files (CSS, JavaScript, Images) 1fa60b5fdacd40ebb95761e7ad
-# https://docs.djangoproject.com/en/3.1/howto/static-files/
-#STATIC_URL = '/static/'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-#STATIC_URL = '/static/'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
 AUTH_USER_MODEL = 'users.User'
 
-'''BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-...
-STATIC_URL = '/static/'
-STATIC_ROOT = 'staticfiles'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)'''
-# djangotemplates/djangotemplates/settings.py
+STATICFILES_DIRS = [BASE_DIR/'static',]
+STATIC_ROOT = BASE_DIR/'staticfiles'
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.10/howto/static-files/
-
-'''STATIC_URL = '/static/'
-
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-
-MEDIA_URL = '/media/'
-
-MEDIAFILES_DIRS = (
-    os.path.join(BASE_DIR, 'media'),
-)
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')'''
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
-PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
-STATIC_ROOT  =   os.path.join(PROJECT_ROOT, 'staticfiles')
-STATIC_URL = '/static/'
-
-# Extra lookup directories for collectstatic to find static files
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
-)
-
-#  Add configuration for static files storage using whitenoise
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-
-
+#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'thandokhulu12345@gmail.com'
 EMAIL_HOST_PASSWORD = '123456kitu'
 LOGIN_URL = "/users/login/"
+
+OGIN_URL = "/users/login/"
 
